@@ -1,0 +1,32 @@
+$ kubectl describe deployment app-deployment -n default
+Name:                   app-deployment
+Namespace:              default
+CreationTimestamp:      Fri, 10 Jun 2022 18:54:04 +0300
+Labels:                 <none>
+Annotations:            deployment.kubernetes.io/revision: 1
+Selector:               app=app
+Replicas:               1 desired | 1 updated | 1 total | 1 available | 0 unavailable
+StrategyType:           RollingUpdate
+MinReadySeconds:        0
+RollingUpdateStrategy:  25% max unavailable, 25% max surge
+Pod Template:
+  Labels:  app=app
+  Containers:
+   app:
+    Image:        pmanilov/app:latest
+    Port:         8000/TCP
+    Host Port:    0/TCP
+    Environment:  <none>
+    Mounts:       <none>
+  Volumes:        <none>
+Conditions:
+  Type           Status  Reason
+  ----           ------  ------
+  Available      True    MinimumReplicasAvailable
+  Progressing    True    NewReplicaSetAvailable
+OldReplicaSets:  <none>
+NewReplicaSet:   app-deployment-55bdb84c64 (1/1 replicas created)
+Events:
+  Type    Reason             Age   From                   Message
+  ----    ------             ----  ----                   -------
+  Normal  ScalingReplicaSet  118s  deployment-controller  Scaled up replica set app-deployment-55bdb84c64 to 1
